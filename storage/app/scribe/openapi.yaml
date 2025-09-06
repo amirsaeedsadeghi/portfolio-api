@@ -1,0 +1,3124 @@
+openapi: 3.0.3
+info:
+  title: 'portfolio-api API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: 'About Me'
+    description: "\nManage your About Me information in the portfolio."
+  -
+    name: Authentication
+    description: "\nAPIs for user authentication using JWT"
+  -
+    name: 'Contact Me'
+    description: "\nManage contact messages submitted through the portfolio."
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Honeypot
+    description: "\nRetrieve honeypot configuration and a one-time token for form protection.\n\nThis endpoint provides a server-generated token and field names used to detect bots.\nUse it before rendering or submitting protected forms."
+  -
+    name: 'Navbar Items'
+    description: "\nManage navigation items used in the portfolio header."
+  -
+    name: 'Project Images'
+    description: "\nManage images that belong to a project."
+  -
+    name: Projects
+    description: "\nManage portfolio projects (list, create, view, update, delete)."
+  -
+    name: Skills
+    description: "\nAPIs for managing skills."
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'Use "Authorization: Bearer &lt; JWT &gt;"'
+security:
+  -
+    default: []
+paths:
+  /api/v1/about-me:
+    post:
+      summary: 'Create About Me information'
+      operationId: createAboutMeInformation
+      description: 'Stores a new About Me record (only one is allowed).'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"message\": \"About Me created successfully\",\n \"data\": {\n   \"id\": 1,\n   \"title\": \"Full Stack Developer\",\n   \"summary\": \"...\",\n   \"location\": \"...\",\n   \"yearsOfExperience\": 5,\n   \"language\": \"...\",\n   ...\n }\n}"
+      tags:
+        - 'About Me'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Professional title.'
+                  example: 'Full Stack Developer'
+                  nullable: false
+                summary:
+                  type: string
+                  description: 'Short summary about yourself.'
+                  example: 'Experienced Laravel + React developer.'
+                  nullable: false
+                location:
+                  type: string
+                  description: 'Your current location.'
+                  example: 'Dublin, Ireland'
+                  nullable: false
+                years_of_experience:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 100.'
+                  example: 24
+                  nullable: false
+                language:
+                  type: string
+                  description: 'Languages you speak.'
+                  example: 'English, Persian'
+                  nullable: false
+                currently_learning:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+                availability:
+                  type: string
+                  description: 'optional Availability status.'
+                  example: 'Open to work'
+                  nullable: true
+                cv_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://dibbert.com/eius-est-dolor-dolores-minus-voluptatem-quisquam'
+                  nullable: true
+                linkedin_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://douglas.net/quo-sed-fugit-facilis-perferendis-dolores-molestias-ipsam-sit'
+                  nullable: true
+                github_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://www.douglas.biz/natus-earum-quas-dignissimos-perferendis'
+                  nullable: true
+                portfolio_image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must be an image. Must be 5120 kilobytes.'
+                  nullable: true
+                yearsOfExperience:
+                  type: integer
+                  description: 'Number of years of professional experience.'
+                  example: 5
+                  nullable: false
+                currentlyLearning:
+                  type: string
+                  description: "optional Technologies or skills you're currently learning."
+                  example: 'Rust, AWS'
+                  nullable: false
+                cvUrl:
+                  type: string
+                  description: 'optional Link to your CV or resume.'
+                  example: 'https://example.com/cv.pdf'
+                  nullable: false
+                linkedinUrl:
+                  type: string
+                  description: 'optional Link to your LinkedIn profile.'
+                  example: 'https://linkedin.com/in/yourname'
+                  nullable: false
+                githubUrl:
+                  type: string
+                  description: 'optional Link to your GitHub profile.'
+                  example: 'https://github.com/yourusername'
+                  nullable: false
+                portfolioImage:
+                  type: string
+                  format: binary
+                  description: 'optional Portfolio image file.'
+                  nullable: false
+              required:
+                - title
+                - summary
+                - location
+                - years_of_experience
+                - language
+                - currently_learning
+                - yearsOfExperience
+    patch:
+      summary: 'Update About Me information'
+      operationId: updateAboutMeInformation
+      description: 'Updates the existing About Me record.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"message\": \"About Me updated successfully\",\n \"data\": {\n   ...\n }\n}"
+      tags:
+        - 'About Me'
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Professional title.'
+                  example: 'Full Stack Developer'
+                  nullable: false
+                summary:
+                  type: string
+                  description: 'Short summary about yourself.'
+                  example: 'Experienced Laravel + React developer.'
+                  nullable: false
+                location:
+                  type: string
+                  description: 'Your current location.'
+                  example: 'Dublin, Ireland'
+                  nullable: false
+                years_of_experience:
+                  type: integer
+                  description: 'Must be at least 1. Must not be greater than 100.'
+                  example: 24
+                  nullable: false
+                language:
+                  type: string
+                  description: 'Languages you speak.'
+                  example: 'English, Persian'
+                  nullable: false
+                currently_learning:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+                availability:
+                  type: string
+                  description: 'Availability status.'
+                  example: 'Open to work'
+                  nullable: false
+                cv_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://dibbert.com/eius-est-dolor-dolores-minus-voluptatem-quisquam'
+                  nullable: false
+                linkedin_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://douglas.net/quo-sed-fugit-facilis-perferendis-dolores-molestias-ipsam-sit'
+                  nullable: false
+                github_url:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'http://www.douglas.biz/natus-earum-quas-dignissimos-perferendis'
+                  nullable: false
+                portfolio_image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must be an image. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+                yearsOfExperience:
+                  type: integer
+                  description: 'Number of years of professional experience.'
+                  example: 5
+                  nullable: false
+                currentlyLearning:
+                  type: string
+                  description: "Technologies or skills you're currently learning."
+                  example: 'Rust, AWS'
+                  nullable: false
+                cvUrl:
+                  type: string
+                  description: 'Link to your CV or resume.'
+                  example: 'https://example.com/cv.pdf'
+                  nullable: false
+                linkedinUrl:
+                  type: string
+                  description: 'Link to your LinkedIn profile.'
+                  example: 'https://linkedin.com/in/yourname'
+                  nullable: false
+                githubUrl:
+                  type: string
+                  description: 'Link to your GitHub profile.'
+                  example: 'https://github.com/yourusername'
+                  nullable: false
+                portfolioImage:
+                  type: string
+                  format: binary
+                  description: 'Portfolio image file.'
+                  nullable: false
+    delete:
+      summary: 'Delete About Me information'
+      operationId: deleteAboutMeInformation
+      description: 'Removes the About Me record from the system.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This action is unauthorized.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This action is unauthorized.'
+      tags:
+        - 'About Me'
+    get:
+      summary: 'Get About Me content'
+      operationId: getAboutMeContent
+      description: 'Returns the stored information about the user.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": {\n     \"id\": 1,\n     \"title\": \"Full Stack Developer\",\n     \"summary\": \"Experienced developer...\",\n     \"portfolioImage\": \"/storage/portfolio/abc123.jpg\"\n     ...\n }\n}"
+      tags:
+        - 'About Me'
+      security: []
+  /api/v1/auth/register:
+    post:
+      summary: 'Register a new user'
+      operationId: registerANewUser
+      description: 'This endpoint creates a new user and returns a JWT token upon successful registration.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'User registered successfully.'
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'User registered successfully.'
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: john@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: 'The password for the user.'
+                  example: Password123!
+                  nullable: false
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: 'John Doe'
+                  nullable: false
+                image:
+                  type: string
+                  description: 'The URL or path to the user profile image (optional).'
+                  example: /storage/images/avatar.png
+                  nullable: false
+                password_confirmation:
+                  type: string
+                  description: 'Must match the password.'
+                  example: Password123!
+                  nullable: false
+              required:
+                - email
+                - password
+                - name
+                - password_confirmation
+      security: []
+  /api/v1/auth/login:
+    post:
+      summary: 'Login user and retrieve JWT token'
+      operationId: loginUserAndRetrieveJWTToken
+      description: 'Attempts to authenticate the user using email and password and returns a JWT token upon success.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'You are logged in.'
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'You are logged in.'
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Invalid credentials'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Invalid credentials'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'The email of the user.'
+                  example: john@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: "The user's password."
+                  example: Password123!
+                  nullable: false
+              required:
+                - email
+                - password
+      security: []
+  /api/v1/auth/me:
+    get:
+      summary: 'Get current authenticated user'
+      operationId: getCurrentAuthenticatedUser
+      description: 'Returns the information of the currently authenticated user.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    user:
+                      id: 1
+                      name: 'John Doe'
+                      email: john@example.com
+                      image: /storage/images/avatar.png
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            example: 1
+                          name:
+                            type: string
+                            example: 'John Doe'
+                          email:
+                            type: string
+                            example: john@example.com
+                          image:
+                            type: string
+                            example: /storage/images/avatar.png
+      tags:
+        - Authentication
+  /api/v1/auth/logout:
+    post:
+      summary: 'Logout the authenticated user'
+      operationId: logoutTheAuthenticatedUser
+      description: 'Invalidates the current token and logs the user out.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Authentication
+  /api/v1/auth/refresh:
+    post:
+      summary: 'Refresh JWT token'
+      operationId: refreshJWTToken
+      description: 'Returns a new JWT token by refreshing the current one.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: ''
+                  data:
+                    token: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: ''
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJ0eXAiOiJKV1QiLCJhbGciOi...
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'Token has expired'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Token has expired'
+      tags:
+        - Authentication
+  /api/v1/contact-me:
+    get:
+      summary: 'Get all contact messages'
+      operationId: getAllContactMessages
+      description: 'Returns a paginated list of contact messages.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": [\n   {\n     \"type\": \"contactMe\",\n     \"id\": 1,\n     \"name\": \"Roham Tehrani\",\n     \"email\": \"rohamtehrani.business@gmail.com\",\n     \"messageBody\": \"This is first message that I created.\",\n     \"links\": { \"self\": \"/api/v1/contact-me/1\" }\n   }\n ],\n \"meta\": { ... },\n \"links\": { ... }\n}"
+      tags:
+        - 'Contact Me'
+    post:
+      summary: 'Submit a contact message'
+      operationId: submitAContactMessage
+      description: 'Stores a new contact message.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Your message submitted successfully.'
+                  data:
+                    type: contactMe
+                    id: 6
+                    name: 'Roham Tehrani'
+                    email: rohamtehrani.business@gmail.com
+                    messageBody: 'This is first message that I created.'
+                    links:
+                      self: /api/v1/contact-me/6
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Your message submitted successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: contactMe
+                      id:
+                        type: integer
+                        example: 6
+                      name:
+                        type: string
+                        example: 'Roham Tehrani'
+                      email:
+                        type: string
+                        example: rohamtehrani.business@gmail.com
+                      messageBody:
+                        type: string
+                        example: 'This is first message that I created.'
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/contact-me/6
+      tags:
+        - 'Contact Me'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Sender name.'
+                  example: 'Roham Tehrani'
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Sender email.'
+                  example: rohamtehrani.business@gmail.com
+                  nullable: false
+                message_body:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 2000 characters.'
+                  example: hfqcoynlazghdtqtqxbaj
+                  nullable: false
+                contact_number:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: wbpilpmufinllwloauydl
+                  nullable: true
+                hp_token:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+                messageBody:
+                  type: string
+                  description: 'Message body.'
+                  example: 'This is first message that I created.'
+                  nullable: false
+              required:
+                - name
+                - email
+                - message_body
+                - hp_token
+                - messageBody
+  '/api/v1/contact-me/{id}':
+    get:
+      summary: 'Get a single contact message'
+      operationId: getASingleContactMessage
+      description: 'Returns the details of a contact message.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    type: contactMe
+                    id: 1
+                    name: 'Roham Tehrani'
+                    email: rohamtehrani.business@gmail.com
+                    messageBody: 'This is first message that I created.'
+                    links:
+                      self: /api/v1/contact-me/1
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: contactMe
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Roham Tehrani'
+                      email:
+                        type: string
+                        example: rohamtehrani.business@gmail.com
+                      messageBody:
+                        type: string
+                        example: 'This is first message that I created.'
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/contact-me/1
+      tags:
+        - 'Contact Me'
+    delete:
+      summary: 'Delete a contact message'
+      operationId: deleteAContactMessage
+      description: 'Removes a contact message by ID.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Contact Me'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the contact message.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/users:
+    get:
+      summary: 'Display a paginated list of users.'
+      operationId: displayAPaginatedListOfUsers
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'John Doe'
+                      email: john@example.com
+                      image: ...
+                  meta:
+                    current_page: 1
+                    last_page: 10
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'John Doe'
+                        email: john@example.com
+                        image: ...
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'John Doe'
+                        email:
+                          type: string
+                          example: john@example.com
+                        image:
+                          type: string
+                          example: ...
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 10
+      tags:
+        - Endpoints
+    post:
+      summary: 'Store a newly created user.'
+      operationId: storeANewlyCreatedUser
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Jane Doe'
+                    email: jane@example.com
+                    image: ...
+                  message: 'User created successfully.'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Jane Doe'
+                      email:
+                        type: string
+                        example: jane@example.com
+                      image:
+                        type: string
+                        example: ...
+                  message:
+                    type: string
+                    example: 'User created successfully.'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: kunde.eloisa@example.com
+                  nullable: false
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must be an image. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: consequatur
+                  nullable: false
+              required:
+                - name
+                - email
+                - password
+  '/api/v1/users/{id}':
+    get:
+      summary: 'Display the specified user.'
+      operationId: displayTheSpecifiedUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'John Doe'
+                    email: john@example.com
+                    image: ...
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: john@example.com
+                      image:
+                        type: string
+                        example: ...
+      tags:
+        - Endpoints
+    put:
+      summary: 'Update the specified user.'
+      operationId: updateTheSpecifiedUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Jane Doe'
+                    email: jane@example.com
+                    image: ...
+                  message: 'User updated successfully.'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Jane Doe'
+                      email:
+                        type: string
+                        example: jane@example.com
+                      image:
+                        type: string
+                        example: ...
+                  message:
+                    type: string
+                    example: 'User updated successfully.'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 3 characters. Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: kunde.eloisa@example.com
+                  nullable: false
+                password:
+                  type: string
+                  description: ''
+                  example: null
+                  nullable: false
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must be an image. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+                role:
+                  type: string
+                  description: ''
+                  example: admin
+                  nullable: false
+                  enum:
+                    - user
+                    - admin
+                    - guest
+                    - author
+    delete:
+      summary: 'Remove the specified user.'
+      operationId: removeTheSpecifiedUser
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: consequatur
+        required: true
+        schema:
+          type: string
+  /api/v1/stacks:
+    post:
+      summary: 'Store a newly created stack.'
+      operationId: storeANewlyCreatedStack
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: React
+                    image: ...
+                  message: 'Stack created successfully'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: React
+                      image:
+                        type: string
+                        example: ...
+                  message:
+                    type: string
+                    example: 'Stack created successfully'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 1 character. Must not be greater than 50 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+              required:
+                - name
+                - image
+    get:
+      summary: 'Display a paginated list of stacks.'
+      operationId: displayAPaginatedListOfStacks
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: Laravel
+                      image: ...
+                  meta:
+                    current_page: 1
+                    last_page: 1
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: Laravel
+                        image: ...
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Laravel
+                        image:
+                          type: string
+                          example: ...
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+      tags:
+        - Endpoints
+      security: []
+  '/api/v1/stacks/{id}':
+    patch:
+      summary: 'Update the specified stack.'
+      operationId: updateTheSpecifiedStack
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: 'Laravel 11'
+                    image: ...
+                  message: 'Stack updated successfully'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: 'Laravel 11'
+                      image:
+                        type: string
+                        example: ...
+                  message:
+                    type: string
+                    example: 'Stack updated successfully'
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must be at least 1 character. Must not be greater than 50 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+    delete:
+      summary: 'Remove the specified stack.'
+      operationId: removeTheSpecifiedStack
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Endpoints
+    get:
+      summary: 'Display the specified stack.'
+      operationId: displayTheSpecifiedStack
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: Vue.js
+                    image: ...
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: Vue.js
+                      image:
+                        type: string
+                        example: ...
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the stack.'
+        example: consequatur
+        required: true
+        schema:
+          type: string
+  /api/v1/security/honeypot-token:
+    get:
+      summary: 'Get honeypot token and config'
+      operationId: getHoneypotTokenAndConfig
+      description: 'Returns a token and field configuration required to enable honeypot checks on the client side.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    token: eyJpdiI6Ilc0RmtiTnZyYkc0Y1p5NHZVWFVVVFE9PSIsInZhbHVlIjoiUENXVFJFK1R1OE1lc2lhbFpBeDd3UT09IiwibWFjIjoiMzNjOGI5NTQxOTE2YTlmM2Q4NTQyYzc2ZmI0MWY1NGM1Y2Y1NzUyMmFhZGRlZjBmYzQ5ZTZmYzlmMjIyNzg0YyIsInRhZyI6IiJ9
+                    tokenField: hp_token
+                    honeypotField: contact_number
+                    minDelay: 0
+                    graceSeconds: 3600
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                        example: eyJpdiI6Ilc0RmtiTnZyYkc0Y1p5NHZVWFVVVFE9PSIsInZhbHVlIjoiUENXVFJFK1R1OE1lc2lhbFpBeDd3UT09IiwibWFjIjoiMzNjOGI5NTQxOTE2YTlmM2Q4NTQyYzc2ZmI0MWY1NGM1Y2Y1NzUyMmFhZGRlZjBmYzQ5ZTZmYzlmMjIyNzg0YyIsInRhZyI6IiJ9
+                      tokenField:
+                        type: string
+                        example: hp_token
+                      honeypotField:
+                        type: string
+                        example: contact_number
+                      minDelay:
+                        type: integer
+                        example: 0
+                      graceSeconds:
+                        type: integer
+                        example: 3600
+      tags:
+        - Honeypot
+      security: []
+  /api/v1/navbar-items:
+    post:
+      summary: 'Create navbar item'
+      operationId: createNavbarItem
+      description: 'Stores a new navbar item.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Navbar Item created successfully.'
+                  data:
+                    type: NavbarItems
+                    id: 5
+                    label: Blog
+                    link: '/#blog'
+                    order: 5
+                    links:
+                      self: /api/v1/navbar-items/5
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Navbar Item created successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: NavbarItems
+                      id:
+                        type: integer
+                        example: 5
+                      label:
+                        type: string
+                        example: Blog
+                      link:
+                        type: string
+                        example: '/#blog'
+                      order:
+                        type: integer
+                        example: 5
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/navbar-items/5
+      tags:
+        - 'Navbar Items'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: 'Visible text.'
+                  example: Home
+                  nullable: false
+                link:
+                  type: string
+                  description: 'URL or hash.'
+                  example: '/#projects'
+                  nullable: false
+                order:
+                  type: integer
+                  description: 'Display order.'
+                  example: 1
+                  nullable: false
+              required:
+                - label
+                - link
+                - order
+    get:
+      summary: 'Get navbar items'
+      operationId: getNavbarItems
+      description: 'Returns the list of navbar items (ordered).'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    -
+                      type: NavbarItems
+                      id: 1
+                      label: Home
+                      link: /
+                      order: 1
+                      links:
+                        self: /api/v1/navbar-items/1
+                  meta: null
+                  links: null
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: NavbarItems
+                        id: 1
+                        label: Home
+                        link: /
+                        order: 1
+                        links:
+                          self: /api/v1/navbar-items/1
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: NavbarItems
+                        id:
+                          type: integer
+                          example: 1
+                        label:
+                          type: string
+                          example: Home
+                        link:
+                          type: string
+                          example: /
+                        order:
+                          type: integer
+                          example: 1
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              example: /api/v1/navbar-items/1
+                  meta:
+                    type: string
+                    example: null
+                  links:
+                    type: string
+                    example: null
+      tags:
+        - 'Navbar Items'
+      security: []
+  '/api/v1/navbar-items/{navbarItem}':
+    patch:
+      summary: 'Update navbar item'
+      operationId: updateNavbarItem
+      description: 'Updates the specified navbar item.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Navbar Item updated successfully.'
+                  data:
+                    type: NavbarItems
+                    id: 3
+                    label: Projects
+                    link: '/#projects'
+                    order: 3
+                    links:
+                      self: /api/v1/navbar-items/3
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Navbar Item updated successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: NavbarItems
+                      id:
+                        type: integer
+                        example: 3
+                      label:
+                        type: string
+                        example: Projects
+                      link:
+                        type: string
+                        example: '/#projects'
+                      order:
+                        type: integer
+                        example: 3
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/navbar-items/3
+      tags:
+        - 'Navbar Items'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  description: 'optional Visible text.'
+                  example: Projects
+                  nullable: false
+                link:
+                  type: string
+                  description: 'optional URL or hash.'
+                  example: '/#projects'
+                  nullable: false
+                order:
+                  type: integer
+                  description: 'optional Display order.'
+                  example: 3
+                  nullable: false
+    delete:
+      summary: 'Delete navbar item'
+      operationId: deleteNavbarItem
+      description: 'Removes a navbar item by ID.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Navbar Items'
+    parameters:
+      -
+        in: path
+        name: navbarItem
+        description: ''
+        example: consequatur
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
+        description: 'Navbar item ID.'
+        example: 3
+        required: true
+        schema:
+          type: integer
+  '/api/v1/navbar-items/{id}':
+    get:
+      summary: 'Get one navbar item'
+      operationId: getOneNavbarItem
+      description: 'Returns a navbar item by ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    type: NavbarItems
+                    id: 2
+                    label: About
+                    link: '/#about'
+                    order: 2
+                    links:
+                      self: /api/v1/navbar-items/2
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: NavbarItems
+                      id:
+                        type: integer
+                        example: 2
+                      label:
+                        type: string
+                        example: About
+                      link:
+                        type: string
+                        example: '/#about'
+                      order:
+                        type: integer
+                        example: 2
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/navbar-items/2
+      tags:
+        - 'Navbar Items'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'Navbar item ID.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/v1/projects/{project_id}/images':
+    get:
+      summary: 'Get project (for images page)'
+      operationId: getProjectforImagesPage
+      description: 'Returns the project info by slug (used by images page).'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    type: projects
+                    id: 1
+                    title: 'Personal Portfolio Backend'
+                    summary: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                    description: '<p>...</p>'
+                    primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                    client: 'Personal Project'
+                    demoLink: 'https://portfolio-demo-link.com'
+                    github: null
+                    category: Framework
+                    order: 1
+                    slug: personal-portfolio-backend
+                    role: 'Full-Stack Web Developer'
+                    startDate: '2025-07-02'
+                    links:
+                      self: /api/v1/projects/personal-portfolio-backend
+                  meta: null
+                  links: null
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projects
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: 'Personal Portfolio Backend'
+                      summary:
+                        type: string
+                        example: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                      description:
+                        type: string
+                        example: '<p>...</p>'
+                      primaryImage:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-1.webp
+                      client:
+                        type: string
+                        example: 'Personal Project'
+                      demoLink:
+                        type: string
+                        example: 'https://portfolio-demo-link.com'
+                      github:
+                        type: string
+                        example: null
+                      category:
+                        type: string
+                        example: Framework
+                      order:
+                        type: integer
+                        example: 1
+                      slug:
+                        type: string
+                        example: personal-portfolio-backend
+                      role:
+                        type: string
+                        example: 'Full-Stack Web Developer'
+                      startDate:
+                        type: string
+                        example: '2025-07-02'
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/projects/personal-portfolio-backend
+                  meta:
+                    type: string
+                    example: null
+                  links:
+                    type: string
+                    example: null
+      tags:
+        - 'Project Images'
+      security: []
+    post:
+      summary: 'Add project images'
+      operationId: addProjectImages
+      description: 'Upload and attach one or more images to the project.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Image(s) added successfully.'
+                  data:
+                    -
+                      type: projectImages
+                      id: 21
+                      image: /storage/images/projects/portfolio/portfolio-2.webp
+                      alt: 'portfolio image 2'
+                      order: 1
+                      link:
+                        self: /api/v1/project-images/21
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Image(s) added successfully.'
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: projectImages
+                        id: 21
+                        image: /storage/images/projects/portfolio/portfolio-2.webp
+                        alt: 'portfolio image 2'
+                        order: 1
+                        link:
+                          self: /api/v1/project-images/21
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: projectImages
+                        id:
+                          type: integer
+                          example: 21
+                        image:
+                          type: string
+                          example: /storage/images/projects/portfolio/portfolio-2.webp
+                        alt:
+                          type: string
+                          example: 'portfolio image 2'
+                        order:
+                          type: integer
+                          example: 1
+                        link:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              example: /api/v1/project-images/21
+      tags:
+        - 'Project Images'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                project_id:
+                  type: integer
+                  description: 'The <code>id</code> of an existing record in the projects table.'
+                  example: 17
+                  nullable: false
+                images:
+                  type: array
+                  description: 'Array of images.'
+                  example:
+                    - consequatur
+                  items:
+                    type: string
+              required:
+                - project_id
+                - images
+    parameters:
+      -
+        in: path
+        name: project_id
+        description: 'The ID of the project.'
+        example: consequatur
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: slug
+        description: 'Project slug.'
+        example: personal-portfolio-backend
+        required: true
+        schema:
+          type: string
+  '/api/v1/projects/{project_id}/images/{id}':
+    put:
+      summary: 'Update a project image'
+      operationId: updateAProjectImage
+      description: 'Replace the file and/or metadata of a single project image.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Image updated successfully.'
+                  data:
+                    type: projectImages
+                    id: 21
+                    image: /storage/images/projects/portfolio/portfolio-2.webp
+                    alt: 'portfolio image 2'
+                    order: 1
+                    link:
+                      self: /api/v1/project-images/21
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Image updated successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projectImages
+                      id:
+                        type: integer
+                        example: 21
+                      image:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-2.webp
+                      alt:
+                        type: string
+                        example: 'portfolio image 2'
+                      order:
+                        type: integer
+                        example: 1
+                      link:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/project-images/21
+      tags:
+        - 'Project Images'
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _bind:
+                  type: object
+                  description: ''
+                  example: []
+                  nullable: false
+                  properties:
+                    image:
+                      type: string
+                      description: ''
+                      example: null
+                      nullable: false
+                image:
+                  type: string
+                  format: binary
+                  description: 'optional New image file.'
+                  nullable: false
+                alt:
+                  type: string
+                  description: 'optional Alt text.'
+                  example: 'portfolio image 2'
+                  nullable: false
+                order:
+                  type: integer
+                  description: 'optional Display order.'
+                  example: 1
+                  nullable: false
+    delete:
+      summary: 'Delete a project image'
+      operationId: deleteAProjectImage
+      description: 'Removes a single project image by ID.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - 'Project Images'
+    parameters:
+      -
+        in: path
+        name: project_id
+        description: 'The ID of the project.'
+        example: consequatur
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: id
+        description: 'Project image ID.'
+        example: 21
+        required: true
+        schema:
+          type: integer
+      -
+        in: path
+        name: slug
+        description: 'Project slug.'
+        example: personal-portfolio-backend
+        required: true
+        schema:
+          type: string
+  /api/v1/project-images:
+    get:
+      summary: 'Get project (for images page)'
+      operationId: getProjectforImagesPage
+      description: 'Returns the project info by slug (used by images page).'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    type: projects
+                    id: 1
+                    title: 'Personal Portfolio Backend'
+                    summary: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                    description: '<p>...</p>'
+                    primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                    client: 'Personal Project'
+                    demoLink: 'https://portfolio-demo-link.com'
+                    github: null
+                    category: Framework
+                    order: 1
+                    slug: personal-portfolio-backend
+                    role: 'Full-Stack Web Developer'
+                    startDate: '2025-07-02'
+                    links:
+                      self: /api/v1/projects/personal-portfolio-backend
+                  meta: null
+                  links: null
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projects
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: 'Personal Portfolio Backend'
+                      summary:
+                        type: string
+                        example: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                      description:
+                        type: string
+                        example: '<p>...</p>'
+                      primaryImage:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-1.webp
+                      client:
+                        type: string
+                        example: 'Personal Project'
+                      demoLink:
+                        type: string
+                        example: 'https://portfolio-demo-link.com'
+                      github:
+                        type: string
+                        example: null
+                      category:
+                        type: string
+                        example: Framework
+                      order:
+                        type: integer
+                        example: 1
+                      slug:
+                        type: string
+                        example: personal-portfolio-backend
+                      role:
+                        type: string
+                        example: 'Full-Stack Web Developer'
+                      startDate:
+                        type: string
+                        example: '2025-07-02'
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/projects/personal-portfolio-backend
+                  meta:
+                    type: string
+                    example: null
+                  links:
+                    type: string
+                    example: null
+      tags:
+        - 'Project Images'
+      security: []
+    parameters:
+      -
+        in: path
+        name: slug
+        description: 'Project slug.'
+        example: personal-portfolio-backend
+        required: true
+        schema:
+          type: string
+  /api/v1/projects:
+    post:
+      summary: 'Create project'
+      operationId: createProject
+      description: 'Stores a new project.'
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Project created successfully.'
+                  data:
+                    type: projects
+                    id: 8
+                    title: 'Personal Portfolio Backend'
+                    summary: ...
+                    description: '<p>...</p>'
+                    primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                    client: 'Personal Project'
+                    demoLink: 'https://portfolio-demo-link.com'
+                    github: null
+                    category: Framework
+                    order: 1
+                    slug: personal-portfolio-backend
+                    role: 'Full-Stack Web Developer'
+                    startDate: '2025-07-02'
+                    stacks: []
+                    images: []
+                    links:
+                      self: /api/v1/projects/personal-portfolio-backend
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Project created successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projects
+                      id:
+                        type: integer
+                        example: 8
+                      title:
+                        type: string
+                        example: 'Personal Portfolio Backend'
+                      summary:
+                        type: string
+                        example: ...
+                      description:
+                        type: string
+                        example: '<p>...</p>'
+                      primaryImage:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-1.webp
+                      client:
+                        type: string
+                        example: 'Personal Project'
+                      demoLink:
+                        type: string
+                        example: 'https://portfolio-demo-link.com'
+                      github:
+                        type: string
+                        example: null
+                      category:
+                        type: string
+                        example: Framework
+                      order:
+                        type: integer
+                        example: 1
+                      slug:
+                        type: string
+                        example: personal-portfolio-backend
+                      role:
+                        type: string
+                        example: 'Full-Stack Web Developer'
+                      startDate:
+                        type: string
+                        example: '2025-07-02'
+                      stacks:
+                        type: array
+                        example: []
+                      images:
+                        type: array
+                        example: []
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/projects/personal-portfolio-backend
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Project title.'
+                  example: 'Personal Portfolio Backend'
+                  nullable: false
+                summary:
+                  type: string
+                  description: 'Short summary.'
+                  example: 'Custom PHP framework with MVC...'
+                  nullable: false
+                description:
+                  type: string
+                  description: 'HTML description.'
+                  example: '<p>...</p>'
+                  nullable: false
+                primary_image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+                client:
+                  type: string
+                  description: Client/owner.
+                  example: 'Personal Project'
+                  nullable: true
+                demo_link:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'https://www.wisozk.info/eum-repellendus-illo-dolorum-omnis-repellendus-voluptatibus-nihil'
+                  nullable: true
+                github:
+                  type: string
+                  description: 'optional GitHub URL.'
+                  example: 'https://github.com/user/repo'
+                  nullable: true
+                category:
+                  type: string
+                  description: Category.
+                  example: Framework
+                  nullable: false
+                role:
+                  type: string
+                  description: Role.
+                  example: 'Full-Stack Web Developer'
+                  nullable: false
+                order:
+                  type: integer
+                  description: 'Display order.'
+                  example: 1
+                  nullable: false
+                start_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-09-03T18:15:46'
+                  nullable: true
+                stacks:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the stacks table.'
+                  example:
+                    - 17
+                  items:
+                    type: integer
+                demoLink:
+                  type: string
+                  description: 'optional Public demo URL.'
+                  example: 'https://portfolio-demo-link.com'
+                  nullable: false
+                slug:
+                  type: string
+                  description: 'URL slug.'
+                  example: personal-portfolio-backend
+                  nullable: false
+                startDate:
+                  type: date
+                  description: 'Start date (YYYY-MM-DD).'
+                  example: '2025-07-02'
+                  nullable: false
+                primaryImage:
+                  type: string
+                  format: binary
+                  description: 'Primary image file.'
+                  nullable: false
+              required:
+                - title
+                - summary
+                - description
+                - primary_image
+                - client
+                - category
+                - role
+                - order
+                - slug
+                - startDate
+                - primaryImage
+    get:
+      summary: 'Get all projects'
+      operationId: getAllProjects
+      description: 'Returns the ordered list of projects.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    -
+                      type: projects
+                      id: 1
+                      title: 'Personal Portfolio Backend'
+                      summary: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                      description: '<p>...</p>'
+                      primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                      client: 'Personal Project'
+                      demoLink: 'https://portfolio-demo-link.com'
+                      github: null
+                      category: Framework
+                      order: 1
+                      slug: personal-portfolio-backend
+                      role: 'Full-Stack Web Developer'
+                      startDate: '2025-07-02'
+                      stacks:
+                        -
+                          type: stacks
+                          id: 1
+                          name: php
+                          image: /storage/images/stacks/php.png
+                          included:
+                            - 'new ProjectResource($this->project)'
+                          links:
+                            self: /api/v1/stacks/1
+                      images:
+                        -
+                          type: projectImages
+                          id: 1
+                          image: /storage/images/projects/portfolio/portfolio-2.webp
+                          alt: 'portfolio image 2'
+                          order: 1
+                          link:
+                            self: /api/v1/project-images/1
+                      links:
+                        self: /api/v1/projects/personal-portfolio-backend
+                  meta: null
+                  links: null
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: array
+                    example:
+                      -
+                        type: projects
+                        id: 1
+                        title: 'Personal Portfolio Backend'
+                        summary: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                        description: '<p>...</p>'
+                        primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                        client: 'Personal Project'
+                        demoLink: 'https://portfolio-demo-link.com'
+                        github: null
+                        category: Framework
+                        order: 1
+                        slug: personal-portfolio-backend
+                        role: 'Full-Stack Web Developer'
+                        startDate: '2025-07-02'
+                        stacks:
+                          -
+                            type: stacks
+                            id: 1
+                            name: php
+                            image: /storage/images/stacks/php.png
+                            included:
+                              - 'new ProjectResource($this->project)'
+                            links:
+                              self: /api/v1/stacks/1
+                        images:
+                          -
+                            type: projectImages
+                            id: 1
+                            image: /storage/images/projects/portfolio/portfolio-2.webp
+                            alt: 'portfolio image 2'
+                            order: 1
+                            link:
+                              self: /api/v1/project-images/1
+                        links:
+                          self: /api/v1/projects/personal-portfolio-backend
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          example: projects
+                        id:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: 'Personal Portfolio Backend'
+                        summary:
+                          type: string
+                          example: 'Custom PHP framework with MVC, validation, and test coverage built from scratch.'
+                        description:
+                          type: string
+                          example: '<p>...</p>'
+                        primaryImage:
+                          type: string
+                          example: /storage/images/projects/portfolio/portfolio-1.webp
+                        client:
+                          type: string
+                          example: 'Personal Project'
+                        demoLink:
+                          type: string
+                          example: 'https://portfolio-demo-link.com'
+                        github:
+                          type: string
+                          example: null
+                        category:
+                          type: string
+                          example: Framework
+                        order:
+                          type: integer
+                          example: 1
+                        slug:
+                          type: string
+                          example: personal-portfolio-backend
+                        role:
+                          type: string
+                          example: 'Full-Stack Web Developer'
+                        startDate:
+                          type: string
+                          example: '2025-07-02'
+                        stacks:
+                          type: array
+                          example:
+                            -
+                              type: stacks
+                              id: 1
+                              name: php
+                              image: /storage/images/stacks/php.png
+                              included:
+                                - 'new ProjectResource($this->project)'
+                              links:
+                                self: /api/v1/stacks/1
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: stacks
+                              id:
+                                type: integer
+                                example: 1
+                              name:
+                                type: string
+                                example: php
+                              image:
+                                type: string
+                                example: /storage/images/stacks/php.png
+                              included:
+                                type: array
+                                example:
+                                  - 'new ProjectResource($this->project)'
+                                items:
+                                  type: string
+                              links:
+                                type: object
+                                properties:
+                                  self:
+                                    type: string
+                                    example: /api/v1/stacks/1
+                        images:
+                          type: array
+                          example:
+                            -
+                              type: projectImages
+                              id: 1
+                              image: /storage/images/projects/portfolio/portfolio-2.webp
+                              alt: 'portfolio image 2'
+                              order: 1
+                              link:
+                                self: /api/v1/project-images/1
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: string
+                                example: projectImages
+                              id:
+                                type: integer
+                                example: 1
+                              image:
+                                type: string
+                                example: /storage/images/projects/portfolio/portfolio-2.webp
+                              alt:
+                                type: string
+                                example: 'portfolio image 2'
+                              order:
+                                type: integer
+                                example: 1
+                              link:
+                                type: object
+                                properties:
+                                  self:
+                                    type: string
+                                    example: /api/v1/project-images/1
+                        links:
+                          type: object
+                          properties:
+                            self:
+                              type: string
+                              example: /api/v1/projects/personal-portfolio-backend
+                  meta:
+                    type: string
+                    example: null
+                  links:
+                    type: string
+                    example: null
+      tags:
+        - Projects
+      security: []
+  '/api/v1/projects/{id}':
+    patch:
+      summary: 'Update project'
+      operationId: updateProject
+      description: 'Updates the specified project by ID.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'Project updated successfully.'
+                  data:
+                    type: projects
+                    id: 1
+                    title: 'Personal Portfolio Backend'
+                    summary: ...
+                    description: '<p>...</p>'
+                    primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                    client: 'Personal Project'
+                    demoLink: 'https://portfolio-demo-link.com'
+                    github: null
+                    category: Framework
+                    order: 1
+                    slug: personal-portfolio-backend
+                    role: 'Full-Stack Web Developer'
+                    startDate: '2025-07-02'
+                    stacks: []
+                    images: []
+                    links:
+                      self: /api/v1/projects/personal-portfolio-backend
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Project updated successfully.'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projects
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: 'Personal Portfolio Backend'
+                      summary:
+                        type: string
+                        example: ...
+                      description:
+                        type: string
+                        example: '<p>...</p>'
+                      primaryImage:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-1.webp
+                      client:
+                        type: string
+                        example: 'Personal Project'
+                      demoLink:
+                        type: string
+                        example: 'https://portfolio-demo-link.com'
+                      github:
+                        type: string
+                        example: null
+                      category:
+                        type: string
+                        example: Framework
+                      order:
+                        type: integer
+                        example: 1
+                      slug:
+                        type: string
+                        example: personal-portfolio-backend
+                      role:
+                        type: string
+                        example: 'Full-Stack Web Developer'
+                      startDate:
+                        type: string
+                        example: '2025-07-02'
+                      stacks:
+                        type: array
+                        example: []
+                      images:
+                        type: array
+                        example: []
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/projects/personal-portfolio-backend
+      tags:
+        - Projects
+      requestBody:
+        required: false
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'optional Project title.'
+                  example: consequatur
+                  nullable: false
+                summary:
+                  type: string
+                  description: 'optional Short summary.'
+                  example: consequatur
+                  nullable: false
+                description:
+                  type: string
+                  description: 'optional HTML description.'
+                  example: 'Dolores dolorum amet iste laborum eius est dolor.'
+                  nullable: false
+                primary_image:
+                  type: string
+                  format: binary
+                  description: 'Must be a file. Must not be greater than 5120 kilobytes.'
+                  nullable: false
+                client:
+                  type: string
+                  description: 'optional Client/owner.'
+                  example: consequatur
+                  nullable: true
+                demo_link:
+                  type: string
+                  description: 'Must be a valid URL.'
+                  example: 'https://www.wisozk.info/eum-repellendus-illo-dolorum-omnis-repellendus-voluptatibus-nihil'
+                  nullable: true
+                github:
+                  type: string
+                  description: 'optional GitHub URL.'
+                  example: consequatur
+                  nullable: true
+                category:
+                  type: string
+                  description: 'optional Category.'
+                  example: consequatur
+                  nullable: false
+                role:
+                  type: string
+                  description: 'optional Role.'
+                  example: consequatur
+                  nullable: false
+                order:
+                  type: integer
+                  description: 'optional Display order.'
+                  example: 17
+                  nullable: false
+                start_date:
+                  type: string
+                  description: 'Must be a valid date.'
+                  example: '2025-09-03T18:15:46'
+                  nullable: true
+                stacks:
+                  type: array
+                  description: 'The <code>id</code> of an existing record in the stacks table.'
+                  example:
+                    - 17
+                  items:
+                    type: integer
+                demoLink:
+                  type: string
+                  description: 'optional Public demo URL.'
+                  example: consequatur
+                  nullable: false
+                slug:
+                  type: string
+                  description: 'optional URL slug.'
+                  example: consequatur
+                  nullable: false
+                startDate:
+                  type: date
+                  description: 'optional Start date (YYYY-MM-DD).'
+                  example: consequatur
+                  nullable: false
+                imagePrimary:
+                  type: string
+                  format: binary
+                  description: 'optional New primary image file.'
+                  nullable: false
+    delete:
+      summary: 'Delete project'
+      operationId: deleteProject
+      description: 'Removes a project by ID.'
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Projects
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'Project ID.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/projects/{slug}':
+    get:
+      summary: 'Get one project (by slug)'
+      operationId: getOneProjectbySlug
+      description: 'Returns a single project by its slug.'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: OK
+                  data:
+                    type: projects
+                    id: 1
+                    title: 'Personal Portfolio Backend'
+                    summary: ...
+                    description: '<p>...</p>'
+                    primaryImage: /storage/images/projects/portfolio/portfolio-1.webp
+                    client: 'Personal Project'
+                    demoLink: 'https://portfolio-demo-link.com'
+                    github: null
+                    category: Framework
+                    order: 1
+                    slug: personal-portfolio-backend
+                    role: 'Full-Stack Web Developer'
+                    startDate: '2025-07-02'
+                    stacks: []
+                    images: []
+                    links:
+                      self: /api/v1/projects/personal-portfolio-backend
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OK
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: projects
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: 'Personal Portfolio Backend'
+                      summary:
+                        type: string
+                        example: ...
+                      description:
+                        type: string
+                        example: '<p>...</p>'
+                      primaryImage:
+                        type: string
+                        example: /storage/images/projects/portfolio/portfolio-1.webp
+                      client:
+                        type: string
+                        example: 'Personal Project'
+                      demoLink:
+                        type: string
+                        example: 'https://portfolio-demo-link.com'
+                      github:
+                        type: string
+                        example: null
+                      category:
+                        type: string
+                        example: Framework
+                      order:
+                        type: integer
+                        example: 1
+                      slug:
+                        type: string
+                        example: personal-portfolio-backend
+                      role:
+                        type: string
+                        example: 'Full-Stack Web Developer'
+                      startDate:
+                        type: string
+                        example: '2025-07-02'
+                      stacks:
+                        type: array
+                        example: []
+                      images:
+                        type: array
+                        example: []
+                      links:
+                        type: object
+                        properties:
+                          self:
+                            type: string
+                            example: /api/v1/projects/personal-portfolio-backend
+      tags:
+        - Projects
+    parameters:
+      -
+        in: path
+        name: slug
+        description: 'Project slug.'
+        example: personal-portfolio-backend
+        required: true
+        schema:
+          type: string
+  /api/v1/skills:
+    post:
+      summary: 'Store a newly created skill.'
+      operationId: storeANewlyCreatedSkill
+      description: ''
+      parameters: []
+      responses:
+        201:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: PHP
+                    level: advanced
+                  message: 'Skill created successfully'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: PHP
+                      level:
+                        type: string
+                        example: advanced
+                  message:
+                    type: string
+                    example: 'Skill created successfully'
+      tags:
+        - Skills
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 1000 characters.'
+                  example: 'Dolores molestias ipsam sit.'
+                  nullable: false
+              required:
+                - title
+                - description
+    get:
+      summary: 'Display a paginated list of skills.'
+      operationId: displayAPaginatedListOfSkills
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: PHP
+                      level: advanced
+                  meta:
+                    current_page: 1
+                    last_page: 5
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: PHP
+                        level: advanced
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: PHP
+                        level:
+                          type: string
+                          example: advanced
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 5
+      tags:
+        - Skills
+      security: []
+  '/api/v1/skills/{id}':
+    patch:
+      summary: 'Update the specified skill.'
+      operationId: updateTheSpecifiedSkill
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: PHP
+                    level: expert
+                  message: 'Skill updated successfully'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: PHP
+                      level:
+                        type: string
+                        example: expert
+                  message:
+                    type: string
+                    example: 'Skill updated successfully'
+      tags:
+        - Skills
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                  nullable: false
+                description:
+                  type: string
+                  description: 'Must be at least 5 characters. Must not be greater than 1000 characters.'
+                  example: 'Dolores molestias ipsam sit.'
+                  nullable: false
+    delete:
+      summary: 'Remove the specified skill.'
+      operationId: removeTheSpecifiedSkill
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {  }
+                properties: {  }
+      tags:
+        - Skills
+    get:
+      summary: 'Display the specified skill.'
+      operationId: displayTheSpecifiedSkill
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: PHP
+                    level: advanced
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: PHP
+                      level:
+                        type: string
+                        example: advanced
+      tags:
+        - Skills
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the skill.'
+        example: consequatur
+        required: true
+        schema:
+          type: string

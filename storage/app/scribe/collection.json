@@ -1,0 +1,2332 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/localhost"
+        }
+    ],
+    "info": {
+        "name": "portfolio-api API Documentation",
+        "_postman_id": "f0e83103-05a4-489f-9f75-7e5c2edf9c9b",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "About Me",
+            "description": "\nManage your About Me information in the portfolio.",
+            "item": [
+                {
+                    "name": "Create About Me information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/about-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/about-me"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "Full Stack Developer",
+                                    "type": "text",
+                                    "description": "Professional title."
+                                },
+                                {
+                                    "key": "summary",
+                                    "value": "Experienced Laravel + React developer.",
+                                    "type": "text",
+                                    "description": "Short summary about yourself."
+                                },
+                                {
+                                    "key": "location",
+                                    "value": "Dublin, Ireland",
+                                    "type": "text",
+                                    "description": "Your current location."
+                                },
+                                {
+                                    "key": "years_of_experience",
+                                    "value": "24",
+                                    "type": "text",
+                                    "description": "Must be at least 1. Must not be greater than 100."
+                                },
+                                {
+                                    "key": "language",
+                                    "value": "English, Persian",
+                                    "type": "text",
+                                    "description": "Languages you speak."
+                                },
+                                {
+                                    "key": "currently_learning",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "availability",
+                                    "value": "Open to work",
+                                    "type": "text",
+                                    "description": "optional Availability status."
+                                },
+                                {
+                                    "key": "cv_url",
+                                    "value": "http:\/\/dibbert.com\/eius-est-dolor-dolores-minus-voluptatem-quisquam",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "linkedin_url",
+                                    "value": "http:\/\/douglas.net\/quo-sed-fugit-facilis-perferendis-dolores-molestias-ipsam-sit",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "github_url",
+                                    "value": "http:\/\/www.douglas.biz\/natus-earum-quas-dignissimos-perferendis",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "yearsOfExperience",
+                                    "value": "5",
+                                    "type": "text",
+                                    "description": "Number of years of professional experience."
+                                },
+                                {
+                                    "key": "currentlyLearning",
+                                    "value": "Rust, AWS",
+                                    "type": "text",
+                                    "description": "optional Technologies or skills you're currently learning."
+                                },
+                                {
+                                    "key": "cvUrl",
+                                    "value": "https:\/\/example.com\/cv.pdf",
+                                    "type": "text",
+                                    "description": "optional Link to your CV or resume."
+                                },
+                                {
+                                    "key": "linkedinUrl",
+                                    "value": "https:\/\/linkedin.com\/in\/yourname",
+                                    "type": "text",
+                                    "description": "optional Link to your LinkedIn profile."
+                                },
+                                {
+                                    "key": "githubUrl",
+                                    "value": "https:\/\/github.com\/yourusername",
+                                    "type": "text",
+                                    "description": "optional Link to your GitHub profile."
+                                },
+                                {
+                                    "key": "portfolio_image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "portfolioImage",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "Stores a new About Me record (only one is allowed)."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"status\": true,\n \"message\": \"About Me created successfully\",\n \"data\": {\n   \"id\": 1,\n   \"title\": \"Full Stack Developer\",\n   \"summary\": \"...\",\n   \"location\": \"...\",\n   \"yearsOfExperience\": 5,\n   \"language\": \"...\",\n   ...\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update About Me information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/about-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/about-me"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "Full Stack Developer",
+                                    "type": "text",
+                                    "description": "Professional title."
+                                },
+                                {
+                                    "key": "summary",
+                                    "value": "Experienced Laravel + React developer.",
+                                    "type": "text",
+                                    "description": "Short summary about yourself."
+                                },
+                                {
+                                    "key": "location",
+                                    "value": "Dublin, Ireland",
+                                    "type": "text",
+                                    "description": "Your current location."
+                                },
+                                {
+                                    "key": "years_of_experience",
+                                    "value": "24",
+                                    "type": "text",
+                                    "description": "Must be at least 1. Must not be greater than 100."
+                                },
+                                {
+                                    "key": "language",
+                                    "value": "English, Persian",
+                                    "type": "text",
+                                    "description": "Languages you speak."
+                                },
+                                {
+                                    "key": "currently_learning",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "availability",
+                                    "value": "Open to work",
+                                    "type": "text",
+                                    "description": "Availability status."
+                                },
+                                {
+                                    "key": "cv_url",
+                                    "value": "http:\/\/dibbert.com\/eius-est-dolor-dolores-minus-voluptatem-quisquam",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "linkedin_url",
+                                    "value": "http:\/\/douglas.net\/quo-sed-fugit-facilis-perferendis-dolores-molestias-ipsam-sit",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "github_url",
+                                    "value": "http:\/\/www.douglas.biz\/natus-earum-quas-dignissimos-perferendis",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "yearsOfExperience",
+                                    "value": "5",
+                                    "type": "text",
+                                    "description": "Number of years of professional experience."
+                                },
+                                {
+                                    "key": "currentlyLearning",
+                                    "value": "Rust, AWS",
+                                    "type": "text",
+                                    "description": "Technologies or skills you're currently learning."
+                                },
+                                {
+                                    "key": "cvUrl",
+                                    "value": "https:\/\/example.com\/cv.pdf",
+                                    "type": "text",
+                                    "description": "Link to your CV or resume."
+                                },
+                                {
+                                    "key": "linkedinUrl",
+                                    "value": "https:\/\/linkedin.com\/in\/yourname",
+                                    "type": "text",
+                                    "description": "Link to your LinkedIn profile."
+                                },
+                                {
+                                    "key": "githubUrl",
+                                    "value": "https:\/\/github.com\/yourusername",
+                                    "type": "text",
+                                    "description": "Link to your GitHub profile."
+                                },
+                                {
+                                    "key": "portfolio_image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "portfolioImage",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PATCH",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": "Updates the existing About Me record."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"About Me updated successfully\",\n \"data\": {\n   ...\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete About Me information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/about-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/about-me"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Removes the About Me record from the system."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n \"message\": \"This action is unauthorized.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get About Me content",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/about-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/about-me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the stored information about the user.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": {\n     \"id\": 1,\n     \"title\": \"Full Stack Developer\",\n     \"summary\": \"Experienced developer...\",\n     \"portfolioImage\": \"\/storage\/portfolio\/abc123.jpg\"\n     ...\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Authentication",
+            "description": "\nAPIs for user authentication using JWT",
+            "item": [
+                {
+                    "name": "Register a new user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"john@example.com\",\"password\":\"Password123!\",\"name\":\"John Doe\",\"image\":\"\\\/storage\\\/images\\\/avatar.png\",\"password_confirmation\":\"Password123!\"}"
+                        },
+                        "description": "This endpoint creates a new user and returns a JWT token upon successful registration.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"status\": true,\n \"message\": \"User registered successfully.\",\n \"data\": {\n     \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOi...\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n \"message\": \"The given data was invalid.\",\n \"errors\": {\n     \"email\": [\"The email has already been taken.\"]\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login user and retrieve JWT token",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"john@example.com\",\"password\":\"Password123!\"}"
+                        },
+                        "description": "Attempts to authenticate the user using email and password and returns a JWT token upon success.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"You are logged in.\",\n \"data\": {\n     \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOi...\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n \"status\": false,\n \"message\": \"Invalid credentials\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n \"message\": \"The given data was invalid.\",\n \"errors\": {\n     \"email\": [\"The email field is required.\"]\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get current authenticated user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the information of the currently authenticated user."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": {\n     \"user\": {\n         \"id\": 1,\n         \"name\": \"John Doe\",\n         \"email\": \"john@example.com\",\n         \"image\": \"\/storage\/images\/avatar.png\"\n     }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout the authenticated user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Invalidates the current token and logs the user out."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Refresh JWT token",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/auth\/refresh",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/auth\/refresh"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns a new JWT token by refreshing the current one."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"\",\n \"data\": {\n     \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOi...\"\n }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n \"status\": false,\n \"message\": \"Token has expired\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Contact Me",
+            "description": "\nManage contact messages submitted through the portfolio.",
+            "item": [
+                {
+                    "name": "Get all contact messages",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/contact-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/contact-me"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns a paginated list of contact messages."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": [\n   {\n     \"type\": \"contactMe\",\n     \"id\": 1,\n     \"name\": \"Roham Tehrani\",\n     \"email\": \"rohamtehrani.business@gmail.com\",\n     \"messageBody\": \"This is first message that I created.\",\n     \"links\": { \"self\": \"\/api\/v1\/contact-me\/1\" }\n   }\n ],\n \"meta\": { ... },\n \"links\": { ... }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get a single contact message",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/contact-me\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/contact-me\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the contact message."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the details of a contact message."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": {\n   \"type\": \"contactMe\",\n   \"id\": 1,\n   \"name\": \"Roham Tehrani\",\n   \"email\": \"rohamtehrani.business@gmail.com\",\n   \"messageBody\": \"This is first message that I created.\",\n   \"links\": { \"self\": \"\/api\/v1\/contact-me\/1\" }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete a contact message",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/contact-me\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/contact-me\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the contact message."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Removes a contact message by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Submit a contact message",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/contact-me",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/contact-me"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Roham Tehrani\",\"email\":\"rohamtehrani.business@gmail.com\",\"message_body\":\"hfqcoynlazghdtqtqxbaj\",\"contact_number\":\"wbpilpmufinllwloauydl\",\"hp_token\":\"consequatur\",\"messageBody\":\"This is first message that I created.\"}"
+                        },
+                        "description": "Stores a new contact message."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"status\": true,\n \"message\": \"Your message submitted successfully.\",\n \"data\": {\n   \"type\": \"contactMe\",\n   \"id\": 6,\n   \"name\": \"Roham Tehrani\",\n   \"email\": \"rohamtehrani.business@gmail.com\",\n   \"messageBody\": \"This is first message that I created.\",\n   \"links\": { \"self\": \"\/api\/v1\/contact-me\/6\" }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Display a paginated list of users.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": [\n    { \"id\": 1, \"name\": \"John Doe\", \"email\": \"john@example.com\", \"image\": \"...\" }\n  ],\n  \"meta\": { \"current_page\": 1, \"last_page\": 10 }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "vmqeopfuudtdsufvyvddq",
+                                    "type": "text",
+                                    "description": "Must be at least 3 characters. Must not be greater than 255 characters."
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "kunde.eloisa@example.com",
+                                    "type": "text",
+                                    "description": "Must be a valid email address."
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"Jane Doe\", \"email\": \"jane@example.com\", \"image\": \"...\" },\n  \"message\": \"User created successfully.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"John Doe\", \"email\": \"john@example.com\", \"image\": \"...\" }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "vmqeopfuudtdsufvyvddq",
+                                    "type": "text",
+                                    "description": "Must be at least 3 characters. Must not be greater than 255 characters."
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "kunde.eloisa@example.com",
+                                    "type": "text",
+                                    "description": "Must be a valid email address."
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "admin",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PUT",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"Jane Doe\", \"email\": \"jane@example.com\", \"image\": \"...\" },\n  \"message\": \"User updated successfully.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Store a newly created stack.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/stacks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/stacks"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "vmqeopfuudtdsufvyvddq",
+                                    "type": "text",
+                                    "description": "Must be at least 1 character. Must not be greater than 50 characters."
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"React\", \"image\": \"...\" },\n  \"message\": \"Stack created successfully\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified stack.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/stacks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/stacks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the stack."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "vmqeopfuudtdsufvyvddq",
+                                    "type": "text",
+                                    "description": "Must be at least 1 character. Must not be greater than 50 characters."
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PATCH",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"Laravel 11\", \"image\": \"...\" },\n  \"message\": \"Stack updated successfully\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified stack.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/stacks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/stacks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the stack."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a paginated list of stacks.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/stacks",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/stacks"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": [ { \"id\": 1, \"name\": \"Laravel\", \"image\": \"...\" } ],\n  \"meta\": { \"current_page\": 1, \"last_page\": 1 }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified stack.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/stacks\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/stacks\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the stack."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"Vue.js\", \"image\": \"...\" }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Honeypot",
+            "description": "\nRetrieve honeypot configuration and a one-time token for form protection.\n\nThis endpoint provides a server-generated token and field names used to detect bots.\nUse it before rendering or submitting protected forms.",
+            "item": [
+                {
+                    "name": "Get honeypot token and config",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/security\/honeypot-token",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/security\/honeypot-token"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns a token and field configuration required to enable honeypot checks on the client side.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"OK\",\n  \"data\": {\n    \"token\": \"eyJpdiI6Ilc0RmtiTnZyYkc0Y1p5NHZVWFVVVFE9PSIsInZhbHVlIjoiUENXVFJFK1R1OE1lc2lhbFpBeDd3UT09IiwibWFjIjoiMzNjOGI5NTQxOTE2YTlmM2Q4NTQyYzc2ZmI0MWY1NGM1Y2Y1NzUyMmFhZGRlZjBmYzQ5ZTZmYzlmMjIyNzg0YyIsInRhZyI6IiJ9\",\n    \"tokenField\": \"hp_token\",\n    \"honeypotField\": \"contact_number\",\n    \"minDelay\": 0,\n    \"graceSeconds\": 3600\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Navbar Items",
+            "description": "\nManage navigation items used in the portfolio header.",
+            "item": [
+                {
+                    "name": "Create navbar item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/navbar-items",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/navbar-items"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"label\":\"Home\",\"link\":\"\\\/#projects\",\"order\":1}"
+                        },
+                        "description": "Stores a new navbar item."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"Navbar Item created successfully.\",\n  \"data\": {\n    \"type\": \"NavbarItems\",\n    \"id\": 5,\n    \"label\": \"Blog\",\n    \"link\": \"\/#blog\",\n    \"order\": 5,\n    \"links\": {\n      \"self\": \"\/api\/v1\/navbar-items\/5\"\n    }\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update navbar item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/navbar-items\/:navbarItem",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/navbar-items\/:navbarItem",
+                            "variable": [
+                                {
+                                    "id": "navbarItem",
+                                    "key": "navbarItem",
+                                    "value": "consequatur",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "3",
+                                    "description": "Navbar item ID."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"label\":\"Projects\",\"link\":\"\\\/#projects\",\"order\":3}"
+                        },
+                        "description": "Updates the specified navbar item."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"Navbar Item updated successfully.\",\n  \"data\": {\n    \"type\": \"NavbarItems\",\n    \"id\": 3,\n    \"label\": \"Projects\",\n    \"link\": \"\/#projects\",\n    \"order\": 3,\n    \"links\": {\n      \"self\": \"\/api\/v1\/navbar-items\/3\"\n    }\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete navbar item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/navbar-items\/:navbarItem",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/navbar-items\/:navbarItem",
+                            "variable": [
+                                {
+                                    "id": "navbarItem",
+                                    "key": "navbarItem",
+                                    "value": "consequatur",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "4",
+                                    "description": "Navbar item ID."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Removes a navbar item by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get navbar items",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/navbar-items",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/navbar-items"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the list of navbar items (ordered).",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"OK\",\n  \"data\": [\n    {\n      \"type\": \"NavbarItems\",\n      \"id\": 1,\n      \"label\": \"Home\",\n      \"link\": \"\/\",\n      \"order\": 1,\n      \"links\": {\n        \"self\": \"\/api\/v1\/navbar-items\/1\"\n      }\n    }\n  ],\n  \"meta\": null,\n  \"links\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get one navbar item",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/navbar-items\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/navbar-items\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "Navbar item ID."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns a navbar item by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"OK\",\n  \"data\": {\n    \"type\": \"NavbarItems\",\n    \"id\": 2,\n    \"label\": \"About\",\n    \"link\": \"\/#about\",\n    \"order\": 2,\n    \"links\": {\n      \"self\": \"\/api\/v1\/navbar-items\/2\"\n    }\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Project Images",
+            "description": "\nManage images that belong to a project.",
+            "item": [
+                {
+                    "name": "Get project (for images page)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project_id\/images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project_id\/images",
+                            "variable": [
+                                {
+                                    "id": "project_id",
+                                    "key": "project_id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the project."
+                                },
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the project info by slug (used by images page).",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"OK\",\n  \"data\": {\n    \"type\": \"projects\",\n    \"id\": 1,\n    \"title\": \"Personal Portfolio Backend\",\n    \"summary\": \"Custom PHP framework with MVC, validation, and test coverage built from scratch.\",\n    \"description\": \"<p>...<\/p>\",\n    \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n    \"client\": \"Personal Project\",\n    \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n    \"github\": null,\n    \"category\": \"Framework\",\n    \"order\": 1,\n    \"slug\": \"personal-portfolio-backend\",\n    \"role\": \"Full-Stack Web Developer\",\n    \"startDate\": \"2025-07-02\",\n    \"links\": {\n      \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\"\n    }\n  },\n  \"meta\": null,\n  \"links\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Add project images",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project_id\/images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project_id\/images",
+                            "variable": [
+                                {
+                                    "id": "project_id",
+                                    "key": "project_id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the project."
+                                },
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"project_id\":17,\"images\":[\"consequatur\"]}"
+                        },
+                        "description": "Upload and attach one or more images to the project."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"Image(s) added successfully.\",\n  \"data\": [\n    {\n      \"type\": \"projectImages\",\n      \"id\": 21,\n      \"image\": \"\/storage\/images\/projects\/portfolio\/portfolio-2.webp\",\n      \"alt\": \"portfolio image 2\",\n      \"order\": 1,\n      \"link\": { \"self\": \"\/api\/v1\/project-images\/21\" }\n    }\n  ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update a project image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project_id\/images\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project_id\/images\/:id",
+                            "variable": [
+                                {
+                                    "id": "project_id",
+                                    "key": "project_id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the project."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "21",
+                                    "description": "Project image ID."
+                                },
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "alt",
+                                    "value": "portfolio image 2",
+                                    "type": "text",
+                                    "description": "optional Alt text."
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "1",
+                                    "type": "text",
+                                    "description": "optional Display order."
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PUT",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": "Replace the file and\/or metadata of a single project image."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"Image updated successfully.\",\n  \"data\": {\n    \"type\": \"projectImages\",\n    \"id\": 21,\n    \"image\": \"\/storage\/images\/projects\/portfolio\/portfolio-2.webp\",\n    \"alt\": \"portfolio image 2\",\n    \"order\": 1,\n    \"link\": { \"self\": \"\/api\/v1\/project-images\/21\" }\n  }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete a project image",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:project_id\/images\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:project_id\/images\/:id",
+                            "variable": [
+                                {
+                                    "id": "project_id",
+                                    "key": "project_id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the project."
+                                },
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "21",
+                                    "description": "Project image ID."
+                                },
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Removes a single project image by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get project (for images page)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/project-images",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/project-images",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the project info by slug (used by images page).",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"status\": true,\n  \"message\": \"OK\",\n  \"data\": {\n    \"type\": \"projects\",\n    \"id\": 1,\n    \"title\": \"Personal Portfolio Backend\",\n    \"summary\": \"Custom PHP framework with MVC, validation, and test coverage built from scratch.\",\n    \"description\": \"<p>...<\/p>\",\n    \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n    \"client\": \"Personal Project\",\n    \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n    \"github\": null,\n    \"category\": \"Framework\",\n    \"order\": 1,\n    \"slug\": \"personal-portfolio-backend\",\n    \"role\": \"Full-Stack Web Developer\",\n    \"startDate\": \"2025-07-02\",\n    \"links\": {\n      \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\"\n    }\n  },\n  \"meta\": null,\n  \"links\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Projects",
+            "description": "\nManage portfolio projects (list, create, view, update, delete).",
+            "item": [
+                {
+                    "name": "Create project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "Personal Portfolio Backend",
+                                    "type": "text",
+                                    "description": "Project title."
+                                },
+                                {
+                                    "key": "summary",
+                                    "value": "Custom PHP framework with MVC...",
+                                    "type": "text",
+                                    "description": "Short summary."
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "<p>...<\/p>",
+                                    "type": "text",
+                                    "description": "HTML description."
+                                },
+                                {
+                                    "key": "client",
+                                    "value": "Personal Project",
+                                    "type": "text",
+                                    "description": "Client\/owner."
+                                },
+                                {
+                                    "key": "demo_link",
+                                    "value": "https:\/\/www.wisozk.info\/eum-repellendus-illo-dolorum-omnis-repellendus-voluptatibus-nihil",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "github",
+                                    "value": "https:\/\/github.com\/user\/repo",
+                                    "type": "text",
+                                    "description": "optional GitHub URL."
+                                },
+                                {
+                                    "key": "category",
+                                    "value": "Framework",
+                                    "type": "text",
+                                    "description": "Category."
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "Full-Stack Web Developer",
+                                    "type": "text",
+                                    "description": "Role."
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "1",
+                                    "type": "text",
+                                    "description": "Display order."
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2025-09-03T18:15:46",
+                                    "type": "text",
+                                    "description": "Must be a valid date."
+                                },
+                                {
+                                    "key": "stacks[0]",
+                                    "value": "17",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "demoLink",
+                                    "value": "https:\/\/portfolio-demo-link.com",
+                                    "type": "text",
+                                    "description": "optional Public demo URL."
+                                },
+                                {
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "type": "text",
+                                    "description": "URL slug."
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "2025-07-02",
+                                    "type": "text",
+                                    "description": "Start date (YYYY-MM-DD)."
+                                },
+                                {
+                                    "key": "primary_image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "primaryImage",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "description": "Stores a new project."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n \"status\": true,\n \"message\": \"Project created successfully.\",\n \"data\": {\n   \"type\": \"projects\",\n   \"id\": 8,\n   \"title\": \"Personal Portfolio Backend\",\n   \"summary\": \"...\",\n   \"description\": \"<p>...<\/p>\",\n   \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n   \"client\": \"Personal Project\",\n   \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n   \"github\": null,\n   \"category\": \"Framework\",\n   \"order\": 1,\n   \"slug\": \"personal-portfolio-backend\",\n   \"role\": \"Full-Stack Web Developer\",\n   \"startDate\": \"2025-07-02\",\n   \"stacks\": [],\n   \"images\": [],\n   \"links\": { \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\" }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "Project ID."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "multipart\/form-data"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "title",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Project title."
+                                },
+                                {
+                                    "key": "summary",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Short summary."
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "Dolores dolorum amet iste laborum eius est dolor.",
+                                    "type": "text",
+                                    "description": "optional HTML description."
+                                },
+                                {
+                                    "key": "client",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Client\/owner."
+                                },
+                                {
+                                    "key": "demo_link",
+                                    "value": "https:\/\/www.wisozk.info\/eum-repellendus-illo-dolorum-omnis-repellendus-voluptatibus-nihil",
+                                    "type": "text",
+                                    "description": "Must be a valid URL."
+                                },
+                                {
+                                    "key": "github",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional GitHub URL."
+                                },
+                                {
+                                    "key": "category",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Category."
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Role."
+                                },
+                                {
+                                    "key": "order",
+                                    "value": "17",
+                                    "type": "text",
+                                    "description": "optional Display order."
+                                },
+                                {
+                                    "key": "start_date",
+                                    "value": "2025-09-03T18:15:46",
+                                    "type": "text",
+                                    "description": "Must be a valid date."
+                                },
+                                {
+                                    "key": "stacks[0]",
+                                    "value": "17",
+                                    "type": "text",
+                                    "description": ""
+                                },
+                                {
+                                    "key": "demoLink",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Public demo URL."
+                                },
+                                {
+                                    "key": "slug",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional URL slug."
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "consequatur",
+                                    "type": "text",
+                                    "description": "optional Start date (YYYY-MM-DD)."
+                                },
+                                {
+                                    "key": "primary_image",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "imagePrimary",
+                                    "src": [],
+                                    "type": "file"
+                                },
+                                {
+                                    "key": "_method",
+                                    "value": "PATCH",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "description": "Updates the specified project by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"Project updated successfully.\",\n \"data\": {\n   \"type\": \"projects\",\n   \"id\": 1,\n   \"title\": \"Personal Portfolio Backend\",\n   \"summary\": \"...\",\n   \"description\": \"<p>...<\/p>\",\n   \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n   \"client\": \"Personal Project\",\n   \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n   \"github\": null,\n   \"category\": \"Framework\",\n   \"order\": 1,\n   \"slug\": \"personal-portfolio-backend\",\n   \"role\": \"Full-Stack Web Developer\",\n   \"startDate\": \"2025-07-02\",\n   \"stacks\": [],\n   \"images\": [],\n   \"links\": { \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\" }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete project",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "Project ID."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Removes a project by ID."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get all projects",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns the ordered list of projects.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": [\n   {\n     \"type\": \"projects\",\n     \"id\": 1,\n     \"title\": \"Personal Portfolio Backend\",\n     \"summary\": \"Custom PHP framework with MVC, validation, and test coverage built from scratch.\",\n     \"description\": \"<p>...<\/p>\",\n     \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n     \"client\": \"Personal Project\",\n     \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n     \"github\": null,\n     \"category\": \"Framework\",\n     \"order\": 1,\n     \"slug\": \"personal-portfolio-backend\",\n     \"role\": \"Full-Stack Web Developer\",\n     \"startDate\": \"2025-07-02\",\n     \"stacks\": [\n       {\n         \"type\": \"stacks\",\n         \"id\": 1,\n         \"name\": \"php\",\n         \"image\": \"\/storage\/images\/stacks\/php.png\",\n         \"included\": [\"new ProjectResource($this->project)\"],\n         \"links\": { \"self\": \"\/api\/v1\/stacks\/1\" }\n       }\n     ],\n     \"images\": [\n       {\n         \"type\": \"projectImages\",\n         \"id\": 1,\n         \"image\": \"\/storage\/images\/projects\/portfolio\/portfolio-2.webp\",\n         \"alt\": \"portfolio image 2\",\n         \"order\": 1,\n         \"link\": { \"self\": \"\/api\/v1\/project-images\/1\" }\n       }\n     ],\n     \"links\": { \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\" }\n   }\n ],\n \"meta\": null,\n \"links\": null\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get one project (by slug)",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/projects\/:slug",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/projects\/:slug",
+                            "variable": [
+                                {
+                                    "id": "slug",
+                                    "key": "slug",
+                                    "value": "personal-portfolio-backend",
+                                    "description": "Project slug."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Returns a single project by its slug."
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"status\": true,\n \"message\": \"OK\",\n \"data\": {\n   \"type\": \"projects\",\n   \"id\": 1,\n   \"title\": \"Personal Portfolio Backend\",\n   \"summary\": \"...\",\n   \"description\": \"<p>...<\/p>\",\n   \"primaryImage\": \"\/storage\/images\/projects\/portfolio\/portfolio-1.webp\",\n   \"client\": \"Personal Project\",\n   \"demoLink\": \"https:\/\/portfolio-demo-link.com\",\n   \"github\": null,\n   \"category\": \"Framework\",\n   \"order\": 1,\n   \"slug\": \"personal-portfolio-backend\",\n   \"role\": \"Full-Stack Web Developer\",\n   \"startDate\": \"2025-07-02\",\n   \"stacks\": [],\n   \"images\": [],\n   \"links\": { \"self\": \"\/api\/v1\/projects\/personal-portfolio-backend\" }\n }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Skills",
+            "description": "\nAPIs for managing skills.",
+            "item": [
+                {
+                    "name": "Store a newly created skill.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/skills",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/skills"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"vmqeopfuudtdsufvyvddq\",\"description\":\"Dolores molestias ipsam sit.\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"PHP\", \"level\": \"advanced\" },\n  \"message\": \"Skill created successfully\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the specified skill.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/skills\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/skills\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the skill."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"title\":\"vmqeopfuudtdsufvyvddq\",\"description\":\"Dolores molestias ipsam sit.\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"PHP\", \"level\": \"expert\" },\n  \"message\": \"Skill updated successfully\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Remove the specified skill.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/skills\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/skills\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the skill."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 204,
+                            "body": "{}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display a paginated list of skills.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/skills",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/skills"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": [\n    { \"id\": 1, \"name\": \"PHP\", \"level\": \"advanced\" }\n  ],\n  \"meta\": { \"current_page\": 1, \"last_page\": 5 }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Display the specified skill.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/skills\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/skills\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consequatur",
+                                    "description": "The ID of the skill."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n  \"data\": { \"id\": 1, \"name\": \"PHP\", \"level\": \"advanced\" }\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "Authorization",
+                "type": "string"
+            }
+        ]
+    }
+}
