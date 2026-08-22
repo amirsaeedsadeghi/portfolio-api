@@ -23,6 +23,8 @@ frontend/public/assets
 frontend/public/icons
 *.zip
 *.sql
+**/.DS_Store
+.DS_Store
 
 
 
