@@ -11,4 +11,10 @@ class AboutMe extends Model
 
     protected $table = "about_me";
     protected $guarded = [];
+
+    protected $casts = [
+        'language' => 'array',
+        'availability' => 'boolean',
+        'years_of_experience' => 'integer',
+    ];
 }

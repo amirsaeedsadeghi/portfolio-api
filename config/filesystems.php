@@ -39,7 +39,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -56,6 +56,13 @@ return [
             'throw' => false,
         ],
 
+        'frontend' => [
+            'driver' => 'local',
+            'root' => env('FRONTEND_PUBLIC_PATH') ?: base_path('frontend/public'),
+            'url' => env('FRONTEND_URL', 'http://localhost:5173'),
+            'visibility' => 'public',
+            'throw' => false,
+        ],
     ],
 
     /*

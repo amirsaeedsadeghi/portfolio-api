@@ -2,13 +2,17 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\AssetTypeEnum;
 use App\Traits\ConvertsSnakeToCamelOutput;
+use App\Traits\ResolvesAssetUrls;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+
 
 class AboutMeResource extends JsonResource
 {
     use ConvertsSnakeToCamelOutput;
+    use ResolvesAssetUrls;
     /**
      * Transform the resource into an array.
      *
@@ -29,7 +33,7 @@ class AboutMeResource extends JsonResource
             'cv_url' => $this->cv_url,
             'linkedin_url' => $this->linkedin_url,
             'github_url' => $this->github_url,
-            'portfolio_image' => asset($this->portfolio_image),
+            'portfolio_image' => $this->assetUrl($this->portfolio_image, AssetTypeEnum::PROFILE),
         ];
     }
 }
