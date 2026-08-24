@@ -21,6 +21,13 @@ use Illuminate\Support\Facades\Route;
 //     return file_get_contents(public_path('../frontend/index.html'));
 // })->where('any', '*');
 
+// Route::get('{any}', function () {
+//     return response()->file(public_path('../frontend/index.html'));
+// })->where('any', '(?!api(?:/|$)).*')->name('spa')->middleware('web');
+
 Route::get('{any}', function () {
     return response()->file(public_path('../frontend/index.html'));
-})->where('any', '(?!api(?:/|$)).*')->name('spa')->middleware('web');
+})
+    ->where('any', '(?!(api|admin)(?:/|$)).*')
+    ->name('spa')
+    ->middleware('web');

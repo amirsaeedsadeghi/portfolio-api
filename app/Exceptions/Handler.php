@@ -59,6 +59,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e)
     {
+        if (! $request->is('api/*')) {
+            return parent::render($request, $e);
+        }
+
         $rid = $request->headers->get('X-Request-Id')
             ?? (app()->bound('request_id') ? app('request_id') : (string) \Illuminate\Support\Str::uuid());
 
