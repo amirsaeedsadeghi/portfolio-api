@@ -8,8 +8,12 @@ AboutMe.propTypes = {
 
 function AboutMe({ aboutMe, skills }) {
     const { summary, portfolioImage } = aboutMe;
-    const skillsFirstPart = skills.filter((_, index) => index < 4);
-    const skillsSecondPart = skills.filter((_, index) => index >= 4);
+    const activeSkills = skills.filter((skill) => skill.isActive);
+    const middleIndex = Math.ceil(activeSkills.length / 2);
+    const skillColumns = [
+        activeSkills.slice(0, middleIndex),
+        activeSkills.slice(middleIndex),
+    ];
 
     return (
         <section
@@ -29,37 +33,24 @@ function AboutMe({ aboutMe, skills }) {
                     <h2 className="text-3xl font-bold mb-6">About Me</h2>
                     <HtmlRenderer html={summary} />
                     <div className="flex flex-col md:flex-row gap-8">
-                        <ul className="flex-1 space-y-4">
-                            {skillsFirstPart.map((skill) => (
-                                <li
-                                    key={skill.id}
-                                    className="dark:bg-light-blue bg-dark-blue dark:text-dark-blue text-light p-4 rounded-lg border-l-8 border-primary hover:translate-x-5 hover:border-secondary hover:dark:text-secondary-dark hover:text-lighter transition-all duration-300"
-                                >
-                                    <h3 className="font-bold mb-1">
-                                        {skill.title}
-                                    </h3>
-                                    <p className="text-sm">
-                                        {skill.description}
-                                    </p>
-                                </li>
-                            ))}
-                        </ul>
+                        {skillColumns.map((column, columnIndex) => (
+                            <ul key={columnIndex} className="flex-1 space-y-4">
+                                {column.map((skill) => (
+                                    <li
+                                        key={skill.id}
+                                        className="dark:bg-light-blue bg-dark-blue dark:text-dark-blue text-light p-4 rounded-lg border-l-8 border-primary hover:translate-x-5 hover:border-secondary hover:dark:text-secondary-dark hover:text-lighter transition-all duration-300"
+                                    >
+                                        <h3 className="font-bold mb-1">
+                                            {skill.title}
+                                        </h3>
 
-                        <ul className="flex-1 space-y-4">
-                            {skillsSecondPart.map((skill) => (
-                                <li
-                                    key={skill.id}
-                                    className="dark:bg-light-blue bg-dark-blue dark:text-dark-blue text-light p-4 rounded-lg border-l-8 border-primary hover:translate-x-5 hover:border-secondary hover:dark:text-secondary-dark hover:text-lighter transition-all duration-300"
-                                >
-                                    <h3 className="font-bold mb-1">
-                                        {skill.title}
-                                    </h3>
-                                    <p className="text-sm">
-                                        {skill.description}
-                                    </p>
-                                </li>
-                            ))}
-                        </ul>
+                                        <p className="text-sm">
+                                            {skill.description}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -19,6 +19,8 @@ class SkillResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
+            'order' => $this->order,
+            'isActive' => $this->is_active,
             'links' => [
                 'self' => route('skills.show', $this->id)
             ],

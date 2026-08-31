@@ -84,4 +84,12 @@ interface SkillRepositoryInterface
      * @return void
      */
     public function deleteModel(Skill $model): void;
+
+    /**
+     * Retrieve all skills with optional filtering, ordered by position or a defined field.
+     *
+     * @param QueryFilterInterface $filter Query filters to apply.
+     * @return Collection<int, Skill> A collection of ordered Skill models.
+     */
+    public function allWithOrder(QueryFilterInterface $filter): Collection;
 }

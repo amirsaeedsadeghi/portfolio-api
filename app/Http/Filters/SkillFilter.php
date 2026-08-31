@@ -31,6 +31,7 @@ class SkillFilter extends QueryFilter
      * @var array<string, string>
      */
     protected array $sortable = [
+        'order'       => 'order',
         'title'       => 'title',
         'description' => 'description',
         'createdAt'   => 'created_at',

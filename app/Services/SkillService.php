@@ -33,7 +33,7 @@ class SkillService
      */
     public function all(QueryFilterInterface $filters): Collection
     {
-        return $this->repository->all($filters);
+        return $this->repository->allWithOrder($filters);
     }
 
     /**

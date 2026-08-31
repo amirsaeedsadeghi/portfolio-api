@@ -26,6 +26,17 @@ class SkillRepository implements SkillRepositoryInterface
     use NormalizesData;
 
     /**
+     * Retrieve all skills ordered by their 'order' field.
+     *
+     * @param QueryFilterInterface $filters Filters to apply (optional search, conditions).
+     * @return Collection<int, Skill> Ordered collection of skills.
+     */
+    public function allWithOrder(QueryFilterInterface $filters): Collection
+    {
+        return Skill::filter($filters)->orderBy('order')->get();
+    }
+
+    /**
      * Retrieve all skills matching the given filter.
      *
      * @param QueryFilterInterface $filters Filters to apply (optional search or conditions).
@@ -45,7 +56,7 @@ class SkillRepository implements SkillRepositoryInterface
      */
     public function paginate(QueryFilterInterface $filters, int $perPage = 15): LengthAwarePaginator
     {
-        return Skill::filter($filters)->paginate($perPage);
+        return Skill::filter($filters)->orderBy('order')->paginate($perPage);
     }
 
     /**

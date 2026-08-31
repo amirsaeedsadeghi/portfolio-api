@@ -24,7 +24,8 @@ class UpdateSkillRequest extends FormRequest
         return [
             //
             'title' => 'sometimes|string|min:5|max:255',
-            'description' => 'sometimes|string|min:5|max:1000'
+            'description' => 'sometimes|string|min:5|max:1000',
+            'isActive' => 'sometimes|boolean'
         ];
     }
 }
