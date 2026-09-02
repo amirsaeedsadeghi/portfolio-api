@@ -106,4 +106,21 @@ interface ProjectRepositoryInterface
      * @return void
      */
     public function deleteModel(Project $project): void;
+
+    /**
+     * Retrieve a paginated active projects with optional filters applied, ordered by display order.
+     *
+     * @param QueryFilterInterface $filters Filters to apply to the query.
+     * @param int $perPage Number of items per page.
+     * @return LengthAwarePaginator Paginated list of projects.
+     */
+    public function paginateActiveWithOrder(QueryFilterInterface $filters, int $perPage = 15): LengthAwarePaginator;
+
+    /**
+     * Retrieve all active projects with optional filters applied, ordered by display order.
+     *
+     * @param QueryFilterInterface $filters Filters to apply to the query. 
+     * @return Collection<int, Project> A collection of projects.
+     */
+    public function allActiveWithOrder(QueryFilterInterface $filters): Collection;
 }

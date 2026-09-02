@@ -15,6 +15,16 @@ class Project extends Model
     use HasFactory;
     use Sluggable;
     protected $guarded = [];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'is_active' => 'boolean',
+        'order' => 'integer',
+    ];
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -36,7 +46,7 @@ class Project extends Model
 
     public function images(): HasMany
     {
-        return $this->hasMany(ProjectImage::class);
+        return $this->hasMany(ProjectImage::class)->orderBy('order');
     }
 
     public function scopeFilter(Builder $builder, QueryFilterInterface $filters)

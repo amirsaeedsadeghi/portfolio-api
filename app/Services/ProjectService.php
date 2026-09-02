@@ -33,7 +33,7 @@ class ProjectService
      */
     public function all(QueryFilterInterface $filters): Collection
     {
-        return $this->repository->all($filters);
+        return $this->repository->allActiveWithOrder($filters);
     }
 
     /**
@@ -45,7 +45,7 @@ class ProjectService
      */
     public function paginate(QueryFilterInterface $filters, int $perPage = 15): LengthAwarePaginator
     {
-        return $this->repository->paginate($filters, $perPage);
+        return $this->repository->paginateActiveWithOrder($filters, $perPage);
     }
 
     /**

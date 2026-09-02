@@ -2,7 +2,9 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\AssetTypeEnum;
 use App\Traits\ConvertsSnakeToCamelOutput;
+use App\Traits\ResolvesAssetUrls;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class ProjectResource extends JsonResource
 {
     use ConvertsSnakeToCamelOutput;
+    use ResolvesAssetUrls;
     /**
      * Transform the resource into an array.
      *
@@ -23,12 +26,13 @@ class ProjectResource extends JsonResource
             'title' => $this->title,
             'summary' => $this->summary,
             'description' => $this->description,
-            'primaryImage' => asset($this->primary_image),
+            'primaryImage' => $this->assetUrl($this->primary_image, AssetTypeEnum::PROJECT),
             'client' => $this->client,
             'demoLink' => $this->demo_link,
             'github' => $this->github,
             'category' => $this->category,
             'order' => $this->order,
+            'isActive' => $this->is_active,
             'slug' => $this->slug,
             'role' => $this->role,
             'startDate' => $this->start_date,

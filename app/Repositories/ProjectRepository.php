@@ -63,7 +63,39 @@ class ProjectRepository implements ProjectRepositoryInterface
      */
     public function findBySlugAndFilter(QueryFilterInterface $filters, string $slug): Project
     {
-        return Project::filter($filters)->where('slug', $slug)->firstOrFail();
+        return Project::filter($filters)
+            ->where('is_active', true)
+            ->where('slug', $slug)
+            ->firstOrFail();
+    }
+
+    /**
+     * Retrieve paginated active projects with optional filters applied, ordered by display order.
+     *
+     * @param QueryFilterInterface $filters Filters to apply to the query.
+     * @param int $perPage Number of projects per page.
+     * @return LengthAwarePaginator Paginated active projects ordered by display order.
+     */
+    public function paginateActiveWithOrder(QueryFilterInterface $filters, int $perPage = 15): LengthAwarePaginator
+    {
+        return Project::filter($filters)
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->paginate($perPage);
+    }
+
+    /**
+     * Retrieve all active projects with optional filters applied, ordered by display order.
+     *
+     * @param QueryFilterInterface $filters Filters to apply to the query.
+     * @return Collection<int, Project> A collection of active projects ordered by display order.
+     */
+    public function allActiveWithOrder(QueryFilterInterface $filters): Collection
+    {
+        return Project::filter($filters)
+            ->where('is_active', true)
+            ->orderBy('order')
+            ->get();
     }
 
     /**
