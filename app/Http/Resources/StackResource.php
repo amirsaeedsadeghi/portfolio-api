@@ -2,14 +2,17 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Enums\AssetTypeEnum;
 use App\Traits\ConvertsSnakeToCamelOutput;
+use App\Traits\ResolvesAssetUrls;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class StackResource extends JsonResource
 {
     use ConvertsSnakeToCamelOutput;
+    use ResolvesAssetUrls;
     /**
      * Transform the resource into an array.
      *
@@ -21,7 +24,7 @@ class StackResource extends JsonResource
             'type' => 'stacks',
             'id' => $this->id,
             'name' => $this->name,
-            'image' => asset($this->image),
+            'image' => $this->assetUrl($this->image, AssetTypeEnum::STACK),
             $this->mergeWhen($request->routeIs('stacks.*'), [
                 'created_at' => $this->created_at,
                 'updated_at' => $this->updated_at

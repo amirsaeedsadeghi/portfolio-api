@@ -17,7 +17,7 @@ return [
         ],
 
         AssetTypeEnum::STACK->value => [
-            'disk' => 'public',
+            'disk' => 'frontend',
             'directory' => 'stacks',
         ],
 

@@ -19,8 +19,7 @@ dist/
 .vite/
 .env*
 .idea/
-frontend/public/assets
-frontend/public/icons
+frontend/public/
 *.zip
 *.sql
 **/.DS_Store
