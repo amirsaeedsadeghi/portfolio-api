@@ -53,10 +53,14 @@ class PortfolioOverview extends BaseWidget
                 ->icon('heroicon-o-cpu-chip'),
 
             Stat::make(
-                'Messages',
-                ContactMe::query()->count()
+                'Unread Messages',
+                ContactMe::query()
+                    ->whereNull('read_at')
+                    ->count()
             )
-                ->description('Received contact messages')
+                ->description(
+                    ContactMe::query()->count() . ' total messages'
+                )
                 ->icon('heroicon-o-envelope'),
 
             Stat::make(

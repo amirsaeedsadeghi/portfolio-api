@@ -62,6 +62,21 @@ class ContactMeResource extends Resource
                     ->label('Received At')
                     ->dateTime()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status')
+                    ->getStateUsing(
+                        fn(ContactMe $record): string =>
+                        $record->read_at === null ? 'Unread' : 'Read'
+                    )
+                    ->badge()
+                    ->color(
+                        fn(string $state): string =>
+                        match ($state) {
+                            'Unread' => 'warning',
+                            'Read' => 'success',
+                        }
+                    ),
             ])
             ->defaultSort('created_at', 'desc')
             ->actions([
