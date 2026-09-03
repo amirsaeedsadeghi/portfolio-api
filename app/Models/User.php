@@ -4,15 +4,18 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Enums\AssetTypeEnum;
 use App\Enums\UserRoleEnum;
 use App\Http\Filters\QueryFilterInterface;
+use App\Support\AssetUrl;
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable implements JWTSubject, HasAvatar
 {
     use HasFactory, Notifiable;
 
@@ -102,5 +105,15 @@ class User extends Authenticatable implements JWTSubject
     public function scopeFilter(Builder $builder, QueryFilterInterface $filter): Builder
     {
         return $filter->apply($builder);
+    }
+
+    /**
+     * Get the avatar URL used by Filament.
+     *
+     * @return string|null
+     */
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return AssetUrl::url($this->image, AssetTypeEnum::AVATAR);
     }
 }

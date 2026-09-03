@@ -2,14 +2,17 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\AssetTypeEnum;
 use App\Enums\UserRoleEnum;
 use App\Traits\ConvertsSnakeToCamelOutput;
+use App\Traits\ResolvesAssetUrls;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
     use ConvertsSnakeToCamelOutput;
+    use ResolvesAssetUrls;
     /**
      * Transform the resource into an array.
      *
@@ -22,7 +25,7 @@ class UserResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'image' => $this->image,
+            'image' => $this->assetUrl($this->image, AssetTypeEnum::AVATAR),
             $this->mergeWhen(
                 $request->user()?->isAdmin(),
                 ['role' => $this->role ?? UserRoleEnum::GUEST]

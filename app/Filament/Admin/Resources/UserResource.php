@@ -2,10 +2,12 @@
 
 namespace App\Filament\Admin\Resources;
 
+use App\Enums\AssetTypeEnum;
 use App\Enums\UserRoleEnum;
 use App\Filament\Admin\Resources\UserResource\Pages;
 use App\Filament\Admin\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Support\AssetStorageResolver;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -33,6 +35,32 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\Section::make('User Information')
                     ->schema([
+                        Forms\Components\Section::make('Profile Image')
+                            ->schema([
+                                Forms\Components\FileUpload::make('image')
+                                    ->label('Avatar')
+                                    ->disk(
+                                        AssetStorageResolver::diskName(
+                                            AssetTypeEnum::AVATAR
+                                        )
+                                    )
+                                    ->directory(
+                                        AssetStorageResolver::directory(
+                                            AssetTypeEnum::AVATAR
+                                        )
+                                    )
+                                    ->image()
+                                    ->imageEditor()
+                                    ->acceptedFileTypes([
+                                        'image/jpeg',
+                                        'image/png',
+                                        'image/webp',
+                                    ])
+                                    ->maxSize(2048)
+                                    ->visibility('public')
+                                    ->columnSpanFull(),
+                            ]),
+
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
@@ -63,9 +91,6 @@ class UserResource extends Resource
                             ->dehydrated(
                                 fn(?string $state): bool => filled($state)
                             )
-                            // ->dehydrateStateUsing(
-                            //     fn(string $state): string => Hash::make($state)
-                            // )
                             ->helperText(
                                 'Leave empty when editing to keep the current password.'
                             ),
@@ -78,6 +103,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Avatar')
+                    ->disk(
+                        AssetStorageResolver::diskName(
+                            AssetTypeEnum::AVATAR
+                        )
+                    )
+                    ->circular(),
+
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),

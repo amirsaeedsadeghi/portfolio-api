@@ -15,4 +15,5 @@ enum AssetTypeEnum: string
     case STACK = 'stack';
     case BRAND = 'brand';
     case DOCUMENT = 'document';
+    case AVATAR = 'avatar';
 }

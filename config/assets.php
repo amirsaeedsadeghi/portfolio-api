@@ -31,6 +31,11 @@ return [
             'directory' => 'assets/brand',
         ],
 
+        AssetTypeEnum::AVATAR->value => [
+            'disk' => 'public',
+            'directory' => 'users/avatars',
+        ],
+
     ],
 
 ];
