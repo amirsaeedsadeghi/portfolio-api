@@ -18,13 +18,13 @@ class ProjectServiceTest extends TestCase
         Mockery::close();
     }
 
-    public function test_all_delegates_to_repository(): void
+    public function test_all_delegates_to_active_ordered_repository_query(): void
     {
         $repo = Mockery::mock(ProjectRepositoryInterface::class);
         $filter = Mockery::mock(QueryFilterInterface::class);
 
         $eloquent = new Collection();
-        $repo->shouldReceive('all')->once()->with($filter)->andReturn($eloquent);
+        $repo->shouldReceive('allActiveWithOrder')->once()->with($filter)->andReturn($eloquent);
 
         $svc = new ProjectService($repo);
         $res = $svc->all($filter);
