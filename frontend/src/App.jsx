@@ -3,6 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home, { loader as homeLoader } from "./pages/Home";
 import Project, { loader as projectLoader } from "./pages/Project";
 import PageNotFound from "./pages/PageNotFound";
+import Social, {loader as socialLoader} from "./pages/Social";
 import ErrorBoundary from "./ui/ErrorBoundary";
 import AppLayout, { loader as appLayoutLoader } from "./ui/AppLayout";
 import { action as contactMeAction } from "./features/home/ContactMe";
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
                 element: <PageNotFound />,
             },
         ],
+    },
+    {
+        path: "/social",
+        element: <Social />,
+        loader: socialLoader,
+        errorElement: <ErrorBoundary />,
     },
 ]);
 
