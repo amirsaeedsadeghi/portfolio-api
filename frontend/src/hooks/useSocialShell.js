@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const SHELL_STAGE = Object.freeze({
@@ -22,33 +22,43 @@ function useSocialShell() {
     const outputTimerRef = useRef(null);
     const commandTimerRef = useRef(null);
 
+    const exitShell = useCallback(() => {
+        navigate("/");
+    }, [navigate]);
+
+    const executeCurrentCommand = useCallback(() => {
+        if (isProcessing) {
+            return;
+        }
+
+        if (stage === SHELL_STAGE.COMPLETE) {
+            navigate("/");
+            return;
+        }
+
+        setIsProcessing(true);
+
+        outputTimerRef.current = window.setTimeout(() => {
+            setIsCurrentOutputVisible(true);
+
+            commandTimerRef.current = window.setTimeout(() => {
+                setStage((currentStage) => currentStage + 1);
+                setIsCurrentOutputVisible(false);
+                setIsProcessing(false);
+            }, NEXT_COMMAND_DELAY);
+        }, OUTPUT_DELAY);
+    }, [isProcessing, navigate, stage]);
+
     useEffect(() => {
         function handleKeyDown(event) {
             if (event.key === "Escape") {
-                navigate("/");
+                exitShell();
                 return;
             }
 
-            if (event.key !== "Enter" || isProcessing) {
-                return;
+            if (event.key === "Enter") {
+                executeCurrentCommand();
             }
-
-            if (stage === SHELL_STAGE.COMPLETE) {
-                navigate("/");
-                return;
-            }
-
-            setIsProcessing(true);
-
-            outputTimerRef.current = window.setTimeout(() => {
-                setIsCurrentOutputVisible(true);
-
-                commandTimerRef.current = window.setTimeout(() => {
-                    setStage((currentStage) => currentStage + 1);
-                    setIsCurrentOutputVisible(false);
-                    setIsProcessing(false);
-                }, NEXT_COMMAND_DELAY);
-            }, OUTPUT_DELAY);
         }
 
         window.addEventListener("keydown", handleKeyDown);
@@ -56,7 +66,7 @@ function useSocialShell() {
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [isProcessing, navigate, stage]);
+    }, [executeCurrentCommand, exitShell]);
 
     useEffect(() => {
         return () => {
@@ -69,6 +79,8 @@ function useSocialShell() {
         stage,
         isProcessing,
         isCurrentOutputVisible,
+        executeCurrentCommand,
+        exitShell,
     };
 }
 
