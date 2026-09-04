@@ -24,11 +24,15 @@
 }
 
 .typewriter {
+    display: inline-block;
+    width: 0;
+    max-width: 100%;
     overflow: hidden;
     white-space: nowrap;
     border-right: 4px solid #fff;
-    width: 0;
-    animation: typing 4s steps(40, end) forwards,
+
+    animation:
+        typing 4s steps(var(--typing-steps), end) forwards,
         blink-caret 0.75s step-end infinite;
 }
 
@@ -36,8 +40,15 @@
     from {
         width: 0;
     }
+
     to {
-        width: 24ch;
+        width: min(var(--title-width), 100%);
+    }
+}
+
+@media (max-width: 639px) {
+    .typewriter {
+        font-size: clamp(1rem, 5vw, 1.25rem);
     }
 }
 
